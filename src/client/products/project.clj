@@ -1,4 +1,4 @@
-(defproject products
+(defproject products "v1"
   :description "SPA products"
 
   :dependencies [[org.clojure/clojure "1.6.0"]

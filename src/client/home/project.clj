@@ -1,4 +1,4 @@
-(defproject home
+(defproject home "v1"
   :description "SPA Home"
 
   :dependencies [[org.clojure/clojure "1.6.0"]

@@ -5,8 +5,7 @@
             [ring.util.http-response :refer :all]
             [clojure.java.io :as io]
             [compojure.route :as route]
-            [selmer.parser :refer [render-file]]
-            [server.status :as aus])
+            [selmer.parser :refer [render-file]])
   (:import [java.io File]
            [javax.script ScriptEngineManager]
            [jdk.nashorn.api.scripting NashornException]))
@@ -22,11 +21,7 @@
 
 (defn seo []
   
-  ;(.eval nashorn (str (slurp "https://code.jquery.com/jquery-2.1.4.js")))
-  (.eval nashorn (str (slurp "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.0/moment.min.js")))
-  (.eval nashorn (str (slurp "https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.2.1/moment-timezone-with-data-2010-2020.min.js")))
-  
-  (.eval nashorn (str (slurp (source-url "public/app.js"))))
+  ;(.eval nashorn (str (slurp (source-url "public/app.js"))))
      
   ;Prod Mode
   ;(.eval nashorn (str (slurp (source-url "public/accounts/prod/app.js"))))
@@ -38,13 +33,15 @@
   ;(.eval nashorn "accounts.core.run();")
 
   ;(.eval nashorn (str (slurp (source-url "public/app.js"))))
-  (.eval nashorn "d")
+  ;(.eval nashorn "d")
+  (str "test")
   )
 
 (defapi app
   (route/resources "/")
 
-  (GET* "/" [] (render-file "home.html" {}))
+  (GET* "/" [] (render-file "home.html" 
+      {:production production :view "home" :title (str (seo) )}))
 
   (GET* "/home/*" [] 
     (render-file "home.html" 

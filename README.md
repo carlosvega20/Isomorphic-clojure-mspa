@@ -1,6 +1,8 @@
 # Isomorphic-clojure-mspa
 Multi-Single-Page Applications (MSPA) using Clojure - ClojureScript - Nashorn JVM.
 
+*** Important: JAVA 1.8 Required
+
 ## Build the SPA modules
 `./lein modules build`
 
@@ -25,7 +27,7 @@ src/
   		- src/home/
 		    core.cljs
 		    state.cljs
-		    dispatcher.cljs
+		    action.cljs
 		    - views/
 		         about.cljs
 		         main.cljs
@@ -35,7 +37,7 @@ src/
   		- src/products/
 		    core.cljs
 		    state.cljs
-		    dispatcher.cljs
+		    action.cljs
 		    - views/
 		         detail.cljs
 		         main.cljs
