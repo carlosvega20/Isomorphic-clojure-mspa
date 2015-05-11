@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang=en-us>
+  <head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="Main Page" name="description">
+    <meta content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" name="viewport">
+    <title>Main Page</title>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/base.css"/>
+
+  </head>
+  <body>
+
+    <div id="app"></div>
+    
+    {% if production %}
+      <script type="text/javascript" src="prod/app.js"></script>
+    {% else %}
+      <script type="text/javascript" src="dev/goog/base.js"></script>
+      <script type="text/javascript" src="dev/app.js"></script>
+      <script type="text/javascript"> goog.require('{{view}}.core'); </script>
+    {% endif %}
+
+    <script type="text/javascript"> {{view}}.core.run(); </script>
+  </body>
+</html>
