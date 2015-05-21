@@ -21,21 +21,25 @@
 
 (defn seo []
   
-  ;(.eval nashorn (str (slurp (source-url "public/app.js"))))
-     
+  ;Polyfills for JavaScript Engine
+  (.eval nashorn (str (slurp (source-url "public/app.js"))))
+  (.eval nashorn (str "global.React = " (slurp (source-url "public/react.js"))))
+  
+  ;dev
+  ;(.eval nashorn (str (slurp (source-url "public/home/dev/goog/base.js"))))
+  ;(.eval nashorn (str (slurp (source-url "public/home/dev/app.js"))))
+  ;(.eval nashorn "goog.require('home.core'); home.core.run();")
+
   ;Prod Mode
-  ;(.eval nashorn (str (slurp (source-url "public/accounts/prod/app.js"))))
+  (.eval nashorn (str (slurp (source-url "public/home/prod/app.js"))))
+  ;(.eval nashorn "home.core.render_page();")
 
-  ; Dev Mode
-  ;(.eval nashorn (str (slurp (source-url "public/accounts/dev/goog/base.js"))))
-  ;(.eval nashorn (str (slurp (source-url "public/accounts/dev/app.js"))))
-  ;(.eval nashorn "goog.require('accounts.core');")
-  ;(.eval nashorn "accounts.core.run();")
-
-  ;(.eval nashorn (str (slurp (source-url "public/app.js"))))
-  ;(.eval nashorn "d")
-  (str "test")
+  ;test reactjs 
+  ;(.eval nashorn "var HelloMessage = React.createClass({displayName: 'HelloMessage',render: function() {return React.createElement('div', null, 'Hello ', this.props.name);}});")
+  ;(.eval nashorn "React.renderToStaticMarkup(React.createElement(HelloMessage, {name: 'John'}))")
+  
   )
+
 
 (defapi app
   (route/resources "/")
